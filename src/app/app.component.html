@@ -1,0 +1,377 @@
+<div class="container-fluid">
+  <div class="mainContainer">
+    <div class="header">
+      <div class="row">
+        <div class="col-md-3">
+          <img src="../assets/images/logo.png">
+        </div>
+        <div class="col-md-9">
+          <div class="nav_menu">
+            <ul>
+              <li><a href="#"> Home</a> </li>
+              <li><a class="loginbtn" (click)="openSignUpIn()"> Sign-in</a></li>
+              <!-- <li><a class="loginbtn" (click)="openModal()"> Sign-in</a></li> -->
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="modal" id="signin_register" tabindex="-1" role="dialog" [ngStyle]="{'display':showregisterLogin}">
+            <div class="modalContent">
+              <div *ngIf="stepRegister  === true" class="modalStepOne">
+                <h1>Sign Up</h1>
+                <div class="modalPContainer">
+                  <form class="form-group" [formGroup]="myform">
+                    <div class="row">
+                      <div class="col-lg-12" [ngClass]="{
+                          'has-danger': userFirstName.invalid && (userFirstName.dirty || userFirstName.touched),
+                          'has-success': userFirstName.valid && (userFirstName.dirty || userFirstName.touched)}">
+                        <input type="text" class="form-control" formControlName="userFirstName"
+                          required placeholder="First Name">
+                        <div class="error text-danger" *ngIf="isFieldInvalid('userFirstName')">
+                          Please Enter First Name
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-lg-12" [ngClass]="{
+                          'has-danger': userLastName.invalid && (userLastName.dirty || userLastName.touched),
+                          'has-success': userLastName.valid && (userLastName.dirty || userLastName.touched)}">
+
+                        <input type="text"  class="form-control" formControlName="userLastName"
+                          required placeholder="Last Name">
+                        <div class="error text-danger" *ngIf="isFieldInvalid('userLastName')">
+                          Please Enter Last Name
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-lg-12" [ngClass]="{
+                          'has-danger': userEmail.invalid && (userEmail.dirty || userEmail.touched),
+                          'has-success': userEmail.valid && (userEmail.dirty || userEmail.touched)}">
+
+                        <input type="email"  class="form-control" formControlName="userEmail" required
+                          placeholder="Email">
+                        <div class="error text-danger" *ngIf="isFieldInvalid('userEmail')">
+                          Please Enter Valid Email
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-lg-12" [ngClass]="{
+                            'has-danger': userName.invalid && (userName.dirty || userName.touched),
+                            'has-success': userName.valid && (userName.dirty || userName.touched)}">
+
+                        <input type="text"  class="form-control" formControlName="userName" required
+                          placeholder="User Name">
+                        <div class="error text-danger" *ngIf="isFieldInvalid('userName')">
+                          Please Enter User Name
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-lg-12" [ngClass]="{
+                              'has-danger': userPassword.invalid && (userPassword.dirty || userPassword.touched),
+                              'has-success': userPassword.valid && (userPassword.dirty || userPassword.touched)}">
+
+                        <input type="password"  class="form-control" formControlName="userPassword"
+                          placeholder="Password" required>
+                        <div class="error text-danger" *ngIf="isFieldInvalid('userPassword')">
+                          Please Enter Password
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-lg-12" [ngClass]="{
+                                'has-danger': ConfirmPassword.invalid && (ConfirmPassword.dirty || ConfirmPassword.touched),
+                                'has-success': ConfirmPassword.valid && (ConfirmPassword.dirty || ConfirmPassword.touched)}">
+                        <input type="password"  class="form-control" formControlName="ConfirmPassword"
+                          placeholder="Confirm Password" required>
+                        <div class="error text-danger" *ngIf="isFieldInvalid('ConfirmPassword')">
+                          Please Enter Password
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-lg-6">
+                        <input type="submit" value="Submit" class="btn btn-primary" (click)="onUserSubmit()">
+                      </div>
+                      <div class="col-lg-6">
+                        <a (click)="registerClose()" class="btn btn-primary cancelbtn">Cancel</a>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+
+              <div *ngIf="stepLogin  === true" class="modalStepTwo">
+                <h1>Sign In</h1>
+                <div class="modalPContainer">
+                  <form class="form-group" [formGroup]="loginForm">
+                    <div class="row">
+                      <div class="col-lg-12" [ngClass]="{
+                                    'has-danger': loginUserName.invalid && (loginUserName.dirty || loginUserName.touched),
+                                    'has-success': loginUserName.valid && (loginUserName.dirty || loginUserName.touched)}">
+
+                        <input type="text" name="loginUserName" class="form-control" formControlName="loginUserName"
+                          placeholder="User Name" required>
+                        <div class="error text-danger" *ngIf="isFieldInvalidlogin('loginUserName')">
+                          Please Enter User Name
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-lg-12" [ngClass]="{
+                                      'has-danger': loginPassword.invalid && (loginPassword.dirty || loginPassword.touched),
+                                      'has-success': loginPassword.valid && (loginPassword.dirty || loginPassword.touched)}">
+                        <input type="password" name="loginPassword" class="form-control" formControlName="loginPassword"
+                          placeholder="Password" required>
+                        <div class="error text-danger" *ngIf="isFieldInvalidlogin('loginPassword')">
+                          Please Enter Password
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row btnsbelow">
+                      <div class="col-lg-6">
+                        <input type="submit" value="Submit" class="btn btn-primary" (click)="onLogin()">
+                      </div>
+                      <div class="col-lg-6">
+                        <a (click)="registerClose()" class="btn btn-primary cancelbtn">Cancel</a>
+                      </div>
+                    </div>
+                  </form>
+                  <div class="row">
+                    <div class="col-lg-12">
+                      <div class="signUpPanel">
+                        <span>Not a User, do </span> <a (click)="openRegister()">Register</a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row" *ngIf="isloginerror === true">
+                    <div class="col-lg-12">
+                      <div class="signUpPanel">
+                        <span>{{ loginerror }}</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="modal" id="productAddModal" tabindex="-1" role="dialog" [ngStyle]="{'display':showModal}">
+            <div class="modalContent">
+              <div *ngIf="stepOne  === true" class="modalStepOne">
+                <h1>Color Analysis</h1>
+                <div class="modalPContainer">
+                  <p>Please take a head shot Under nature light without make-up.
+                  </p>
+                </div>
+                <div class="takePic">
+                  <a (click)="actStepTwo()"> Take Pic</a>
+                </div>
+              </div>
+              <div *ngIf="stepTwo === true" class="modalStepTwo">
+                <div class="picContainer">
+                  <!-- <img src="../assets/images/Picture3.png" /> -->
+                  <webcam [height]="340" [width]="340" [trigger]="triggerObservable" (imageCapture)="handleImage($event)"
+                    *ngIf="showWebcam" [allowCameraSwitch]="allowCameraSwitch" [switchCamera]="nextWebcamObservable"
+                    [videoOptions]="videoOptions" (cameraSwitched)="cameraWasSwitched($event)" (initError)="handleInitError($event)"></webcam>
+                </div>
+                <div class="buttons">
+                  <div class="leftbtn">
+                    <!-- <a (click)="acceptPic()">Accept</a> -->
+                    <a (click)="triggerSnapshot();">Accept</a>
+                  </div>
+                  <!-- <div class="rightPic">
+                    <a (click)="retakePic()">Retake</a>
+                  </div> -->
+                  <h4 *ngIf="errors.length > 0">Messages:</h4>
+                  <ul *ngFor="let error of errors">
+                    <li>{{error | json}}</li>
+                  </ul>
+                </div>
+              </div>
+              <div *ngIf="stepThree === true" class="modalstepThree">
+                <div class="picContainer">
+                  <img src="{{imgUrl}}">
+                </div>
+                <div class="buttons">
+                  <div class="leftbtn" style="float: left;">
+                    <a (click)="acceptPic();">Next</a>
+                  </div>
+                  <div class="rightPic" style="float: right;">
+                    <a (click)="retakePic()">Retake</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12">
+          <div class="modal modal1" id="productAddModal1" tabindex="-1" role="dialog" [ngStyle]="{'display':showModal1}">
+            <div class="modalContent">
+              <div class="modalStepOne">
+                <h1>Color Analysis Results</h1>
+                <div class="row" style="margin-top:22px;">
+                  <div class="col-md-2"></div>
+                  <div class="col-md-8">
+                    <div class="clrStrip clrStripFirst">
+                      <!-- Removed this [(colorPicker)]="colorArray['pink']" -->
+                      <input class="clrinput" [style.background]="colorArray['pink']" />
+                      <input class="clrinput" [style.background]="colorArray['pink1']" />
+                      <input class="clrinput" [style.background]="colorArray['pink2']" />
+                      <input class="clrinput" [style.background]="colorArray['pink3']" />
+                      <input class="clrinput" [style.background]="colorArray['pink4']" />
+                      <input class="clrinput" [style.background]="colorArray['pink5']" />
+                      <input class="clrinput" [style.background]="colorArray['pink6']" />
+                      <div>
+                        <input type="checkbox" (change)="pinkChange()" [(ngModel)]="chkpink" >
+                      </div>
+                    </div>
+                    <div class="clrStrip">
+                      <input class="clrinput" [style.background]="colorArray['blue']" />
+                      <input class="clrinput" [style.background]="colorArray['blue1']" />
+                      <input class="clrinput" [style.background]="colorArray['blue2']" />
+                      <input class="clrinput" [style.background]="colorArray['blue3']" />
+                      <input class="clrinput" [style.background]="colorArray['blue4']" />
+                      <input class="clrinput" [style.background]="colorArray['blue5']" />
+                      <input class="clrinput" [style.background]="colorArray['blue6']" />
+                      <div>
+                        <input type="checkbox"  (change)="blueChange()" [(ngModel)]="chkblue" >
+                      </div>
+                    </div>
+                    <div class="clrStrip">
+                      <input class="clrinput" [style.background]="colorArray['green']" />
+                      <input class="clrinput" [style.background]="colorArray['green1']" />
+                      <input class="clrinput" [style.background]="colorArray['green2']" />
+                      <input class="clrinput" [style.background]="colorArray['green3']" />
+                      <input class="clrinput" [style.background]="colorArray['green4']" />
+                      <input class="clrinput" [style.background]="colorArray['green5']" />
+                      <input class="clrinput" [style.background]="colorArray['green6']" />
+                      <div>
+                        <input type="checkbox"   (change)="greenChange()"  [(ngModel)]="chkgreen" >
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-2"></div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="submitColors">
+                      <a (click)="submitColor()">Submit</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="modal modal1" id="productAddModal1" tabindex="-1" role="dialog" [ngStyle]="{'display':showModal2}">
+            <div class="modalContent">
+              <div class="modalStepOne">
+                <h1>Preferred Colors</h1>
+                <div class="row" style="margin-top:22px;">
+                  <div class="col-md-1"></div>
+                  <div class="col-md-10">
+                    <div style="border: 1px solid; float: left;">
+                      <div class="colorBox" [(colorPicker)]="selectedColorArray['color']" [style.background]="selectedColorArray['color']">
+                        <div class="row">
+                          <input class="chk" type="checkbox">
+                        </div>
+                        <!-- <div class="row">
+                          <p class="colorName">Sky</p>
+                        </div> -->
+                      </div>
+                      <div class="colorBox" [(colorPicker)]="selectedColorArray['color1']"  [style.background]="selectedColorArray['color1']">
+                        <div class="row">
+                          <input type="checkbox" class="chk">
+                        </div>
+                        <!-- <div class="row">
+                          <p class="colorName">baby blue</p>
+                        </div> -->
+                      </div>
+                      <div class="colorBox" [(colorPicker)]="selectedColorArray['color2']"  [style.background]="selectedColorArray['color2']">
+                        <div class="row">
+                          <input type="checkbox" class="chk">
+                        </div>
+                        <!-- <div class="row">
+                          <p class="colorName">maya</p>
+                        </div> -->
+                      </div>
+                      <div class="colorBox" [(colorPicker)]="selectedColorArray['color3']"  [style.background]="selectedColorArray['color3']">
+                        <div class="row">
+                          <input type="checkbox" class="chk">
+                        </div>
+                        <!-- <div class="row">
+                          <p class="colorName">cornflower</p>
+                        </div> -->
+                      </div>
+                      <div class="colorBox" [(colorPicker)]="selectedColorArray['color4']"  [style.background]="selectedColorArray['color4']">
+                        <div class="row">
+                          <input type="checkbox" class="chk">
+                        </div>
+                        <!-- <div class="row">
+                          <p class="colorName">azure</p>
+                        </div> -->
+                      </div>
+                      <div class="colorBox" [(colorPicker)]="selectedColorArray['color5']"  [style.background]="selectedColorArray['color5']">
+                        <div class="row">
+                          <input type="checkbox" class="chk">
+                        </div>
+                        <!-- <div class="row">
+                          <p class="colorName white">navy</p>
+                        </div> -->
+                      </div>
+                      <div class="colorBox" [(colorPicker)]="selectedColorArray['color6']"  [style.background]="selectedColorArray['color6']">
+                        <div class="row">
+                          <input type="checkbox" class="chk">
+                        </div>
+                        <!-- <div class="row">
+                          <p class="colorName white">royal</p>
+                        </div> -->
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-1"></div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="modalPContainer">
+                      <p style="font-size:12px">We will try our best to find outfits that match your favorite colors.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="submitColors">
+                      <a (click)="goPrevious()">Previous</a>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="submitColors">
+                      <a (click)="submitFinal()">Submit</a>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

@@ -1,0 +1,367 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+
+* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+
+body {
+    line-height: 1;
+    font-family: 'Roboto', Helvetica, Arial, sans-serif;
+}
+
+ol, ul {
+    list-style: none;
+}
+
+blockquote, q {
+    quotes: none;
+}
+
+    blockquote:before, blockquote:after,
+    q:before, q:after {
+        content: '';
+        content: none;
+    }
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+html {
+    height: 100%;
+    width: 100%;
+}
+
+.nopdLR {
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+}
+.noPR {
+    padding-right: 0px !important;
+}
+
+
+.mainContainer{
+    background-image: url(../assets/images/Woman_BW.jpg);
+    min-height: 790px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width:100%;
+}
+
+.header{
+    width: 100%;
+    height: 72px;
+    background-color: #000;
+    opacity: 0.5;
+    position: relative;
+    top: 34px;
+}
+
+.header  img{
+    margin-left: 35px;
+}
+
+.nav_menu{
+    float: right;
+    margin-right: 25px;
+}
+
+.nav_menu > ul{
+
+}
+.nav_menu > ul > li{
+    list-style-type: none;
+    display: inline;
+    padding-right: 46px;
+}
+
+.nav_menu> ul> li> a{
+    color: #fff;
+    line-height: 3;
+    font-size: 21px;
+    text-decoration: none;
+    cursor: pointer;
+}
+.loginbtn{
+    padding: 5px;
+    background-color: #f3c553;
+    color:#000 !important;
+    text-decoration: none;
+    border-radius: 15px;
+} 
+.modal{
+    width: 33%;
+    text-align: center;
+    margin: 0 auto;
+    min-height: 650px;
+    top: 139px;
+}
+.modalContent{
+    background-color:white; 
+    height: 450px;    
+    opacity: 0.9;
+}
+
+.modalStepOne{
+    margin: 0 auto;
+}
+
+.modalStepOne h1{
+    padding-top: 30px;
+    font-weight: bold;
+    font-size: 29px;
+}
+
+.modalPContainer{
+    width: 65%;
+    margin: 0 auto;
+    padding-top: 58px;
+}
+
+.modalPContainer p{
+    font-size: 29px;
+}
+
+.takePic{
+    padding-top: 66px;
+    margin: 0 auto;
+}
+
+.takePic a{
+    padding: 8px;
+    background-color: #000;
+    color: #fff;
+    padding-left: 28px;
+    font-weight: bold;
+    padding-right: 28px;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.modalStepTwo{    
+    margin: 0 auto;
+}
+.modalStepTwo h1{
+    padding-top: 30px;
+    font-weight: bold;
+    font-size: 29px;
+}
+
+.modalStepTwo .picContainer{
+    margin: 0 auto;
+    padding-top: 32px;
+}
+
+.modalStepTwo .picContainer > img{
+    width: 275px;
+}
+
+.modalstepThree{
+    margin: 0 auto;
+}
+
+.modalstepThree .picContainer{   
+    margin: 0 auto;
+    padding-top: 32px; 
+}
+
+.modalstepThree .picContainer > img{
+    width: 275px;
+}
+
+.buttons{
+    margin: 0 auto;
+    margin-top: 15px;
+    width: 71%;
+}
+
+.leftbtn{
+    /* float: left; */
+}
+
+.leftbtn > a{
+    padding: 8px;
+    background-color: #000;
+    color: #fff;
+    padding-left: 55px;
+    font-weight: bold;
+    padding-right: 55px;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.rightPic{
+    /* float: right; */
+}
+
+.rightPic > a{
+    padding: 8px;
+    background-color: #000;
+    color: #fff;
+    padding-left: 55px;
+    font-weight: bold;
+    padding-right: 55px;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.modal1{
+    width: 46% !important;
+}
+
+.clrStripFirst{
+    margin-left: 37px;
+}
+.clrStrip{
+    float: left;
+    margin-right: 20px;
+    width: 122px;
+    background-color: #fff;
+    box-shadow: 5px 10px 8px darkgrey;
+    margin-bottom: 22px;
+}
+
+.clrStrip > img{
+    height: 249px;
+    width: 123px;
+}
+
+.submitColors{
+    margin: 0 auto; width:100%; margin-top: 29px;
+}
+
+.submitColors > a {
+    padding: 8px;
+    background-color: #000;
+    color: #fff;
+    padding-left: 55px;
+    font-weight: bold;
+    padding-right: 55px;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.colorBox{
+    width: 73px;height: 120px;margin: 5px; float: left;
+}
+
+.chk{
+    float: left;margin: 3px;
+}
+
+.colorName{
+   float: left;
+    margin-top: 74px;
+    text-transform: capitalize;
+    margin-left: 3px;
+    font-size: 13px;
+}
+
+.sky{
+  background-color: #95c8da;
+  color: #000;
+
+}
+
+.babyblue{
+    background-color: #8bcff2;
+    color: #000;
+}
+.maya{
+    background-color: #73c2fd;
+    color: #000;
+}
+.cornflower{
+    background-color: #6795f8;
+    color: #000;
+}
+.azure{
+    background-color: #0080ff;
+    color: #000;
+}
+.navy{
+    background-color: #020181;
+    color: #fff;
+}
+.royal{
+    background-color: #121f6d;
+    color: #fff;
+}
+
+.pink{
+    background-color: #ef1fbb;
+}
+
+.clrinput{
+    width: 100px;
+    border: 0 none;
+    margin-bottom: 2px;
+    min-height: 28px;
+}
+
+.white{
+    color: #fff !important;
+}
+
+.form
+{
+    padding-left: 15px;
+}
+
+.form-control{
+    margin-bottom: 8px !important;
+}
+
+.control-label{
+    float: left;
+}
+
+.modalPContainer{
+    padding-top: 10px !important;
+}
+
+.cancelbtn{
+    padding: 8px;
+    color: #fff !important;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.btnsbelow{
+    margin-top: 30px !important;
+}
+.signUpPanel{
+    margin-top: 35px;
+    color: cornflowerblue;
+    font-weight: bold;
+}
+
+.signUpPanel > a{
+    color: red;
+    cursor: pointer;
+    text-decoration: none;
+}
