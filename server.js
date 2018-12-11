@@ -9,7 +9,7 @@ var app = express();
 // Body Parser Middleware
 app.use(bodyParser.json()); 
 
-var functionHost = "dv6iu1iltl.execute-api.us-east-2.amazonaws.com";
+var functionHost = "fuz8via4zd.execute-api.us-east-1.amazonaws.com";
 var functionURL = "/Prod/api/S3Bucket";
 
 const port = process.env.PORT || 3000;
